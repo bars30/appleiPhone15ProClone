@@ -1,0 +1,132 @@
+.hidd {
+ overflow-x: hidden !important;
+}
+
+
+.general-container {
+ display: flex;
+ justify-content: start;
+ overflow-x: hidden;
+ scroll-snap-type: x mandatory;
+ justify-items: center;
+ padding: 0 30px;
+ 
+}
+
+.video-cont {
+ width: 100%;
+ margin: 0 32px;
+ scroll-snap-align: center;
+ text-align: center;
+ position: relative;
+}
+
+.video-cont video {
+ height: 665px;
+ border-radius: 15px;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease-in-out;
+}
+/* 
+.video-cont:last-child {
+ margin-left: 21%;
+} */
+
+.text {
+ position: absolute;
+ top: 19px;
+ color: white;
+ font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+ left: 35px;
+}
+
+.video-cont h2 {
+ font-size: 48px;
+}
+
+.video-cont h3 {
+ font-size: 28px;
+}
+
+.video-cont p {
+ margin-top: 5px;
+}
+
+
+.controls {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding-top: 20px;
+ width: fit-content;
+ margin: auto;
+}
+
+.navigation-dots {
+ display: flex;
+ justify-content: center;
+ margin-right: 20px;
+}
+
+.navigation-dots span {
+ width: 15px;
+ height: 15px;
+ border-radius: 15px;
+ background-color: grey;
+ margin: 0 5px;
+ cursor: pointer;
+ transition: all 0.5s ease-in;
+}
+
+.navigation-dots .active {
+ background-color: black;
+}
+
+.playback-buttons img {
+ width: 24px;
+ height: 24px;
+ margin: 0 10px;
+ cursor: pointer;
+}
+.playback-buttons {
+ background-color: black;
+ border-radius: 4px;
+} 
+:root {
+ --inppercent: 33%;
+}
+
+
+.inprogress {
+ background-color: grey !important;
+ width: 75px !important;
+ position: relative;
+}
+.inprogress::after {
+ content: "";
+ background-color: white;
+ position: absolute;
+ height: 15px;
+ border-radius: 15px;
+ width: var(--inppercent);
+ transition: all 0.25s ease-in;
+}
+
+/* ---------------------------------------- */
+.navigation-dots {
+ width: fit-content;
+ background-color: #333335;
+ margin: auto;
+ transition: all 0.3s ease;
+ padding: 25px;
+ border-radius: 43px;
+}
+.playback-buttons {
+ background-color: #333335;
+ border-radius: 50px;
+ padding: 18px;
+ margin-left: 15px;
+}
+
+
+

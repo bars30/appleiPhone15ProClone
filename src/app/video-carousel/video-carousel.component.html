@@ -1,0 +1,43 @@
+<div class="hidd">
+  
+<div class="general-container" #carouselContainer>
+  <div class="video-cont" *ngFor="let item of hightlightsSlides; let i = index" #videoContainers>
+    <video 
+      [muted]="true" 
+      [autoplay]="i === 0" 
+      [controls]="!true"
+      (ended)="onVideoEnded(i)"
+      (play)="onVideoPlay(i)"
+      (pause)="onVideoPause(i)"
+      (timeupdate)="onTimeUpdate($event, i)"
+      #videoElement
+    >
+      <source [src]="item.video">
+    </video>
+    <div class="text">
+      <h2>{{item.textLists[0]}}</h2>
+      <h3>{{item.textLists[1]}}</h3>
+      <p>{{item.textLists[2]}}</p>
+    </div>
+  </div>
+ </div>
+ <div class="controls">
+  <div class="navigation-dots">
+    <span #spans *ngFor="let item of hightlightsSlides; let i = index" 
+          [class.active]="i === currentVideoIndex" 
+          (click)="scrollToVideo(i)"></span>
+  </div>
+  <div class="playback-buttons">
+    <img *ngIf="videoStatus === 'playing'" src="/assets/images/pause.svg" alt="Pause" (click)="pauseCurrentVideo()">
+    <img *ngIf="videoStatus === 'paused'" src="/assets/images/play.svg" alt="Play" (click)="playCurrentVideo()">
+    <img *ngIf="videoStatus === 'ended'" src="/assets/images/replay.svg" alt="Replay" (click)="replayCurrentVideo()">
+  </div>
+ </div>
+
+ <!-- <p>----------------</p>
+ <div class="test">
+
+ </div>
+ <video src="/assets/videos/highlight-first.mp4"></video>
+ <video src="/assets/videos/hightlight-third.mp4"></video> -->
+</div>

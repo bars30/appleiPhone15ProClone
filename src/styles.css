@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: SF Pro Display,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+:root {
+ --inppercent: 33%;
+ --r-globalnav-color: rgba(255, 255, 255, .8);
+}
+body {
+ background-color: #000000;
+}
+.container {
+ width: 85%;
+ margin: auto;
+}
+.change_cont {
+ display: flex;
+ width: fit-content;
+ margin: auto;
+}

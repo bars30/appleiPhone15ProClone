@@ -1,0 +1,27 @@
+header {
+ display: flex;
+ justify-content: space-between;
+ padding: 14px 0;
+ cursor: pointer;
+}
+header a {
+ color: #c5c5c5cc;
+ text-decoration: none;
+ font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+ display: block;
+ margin: 0 15px;
+ transition: all 0.2s ease-in;
+}
+header a:hover {
+ color: #ffffff;
+}
+nav {
+ display: flex;
+}
+.img_cont {
+ display: flex;
+}
+.img_cont img {
+ display: block;
+ margin: 0 0 0 16px;
+}

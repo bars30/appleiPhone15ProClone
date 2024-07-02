@@ -1,0 +1,39 @@
+h1 {
+ color: #beb8ae;
+ font-size: 28px;
+ text-align: center;
+ opacity: 0;
+}
+video {
+ width: 100%;
+}
+.hero {
+ padding: 77px 0 35px;
+}
+button {
+ 
+ background-color: #0071e3;
+ display: block;
+ margin: auto;
+ color: white;
+ cursor: pointer;
+ padding: 12px 21px;
+ font-size: 16px;
+ border-radius: 25px;
+ border: none;
+
+}
+.info_cont {
+ opacity: 0;
+ transform: translateY(20px);
+}
+.info_cont p {
+ color: white;
+ text-align: center;
+ margin-top: 15px;
+ font-size: 21px;
+}
+
+
+
+

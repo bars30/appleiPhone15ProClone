@@ -1,0 +1,40 @@
+.highlights {
+ background-color: #101010;
+ padding-top: 105px;
+ padding-bottom: 135px;
+}
+h1 {
+ transform: translateY(20px);
+ color: #86868b;
+ opacity: 0;
+ font-size: 56px;
+}
+.highlights .container:nth-child(1) {
+ padding-bottom: 25px;
+ display: flex;
+ justify-content: space-between;
+}
+a {
+ color: #2997ff;
+ font-weight: 400;
+ font-size: 21px;
+ text-decoration: none;
+}
+a:hover {
+ text-decoration:line-through;
+}
+.watch_cont {
+ display: flex;
+ padding: 20px 0;
+}
+.watch_item {
+ margin-left: 23px;
+}
+.link {
+ opacity: 0; /* Initially hide elements */
+ transform: translateY(50px); /* Initially position elements 50px down */
+}
+
+
+
+
