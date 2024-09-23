@@ -25,12 +25,17 @@
   <div class="navigation-dots">
     <span #spans *ngFor="let item of hightlightsSlides; let i = index" 
           [class.active]="i === currentVideoIndex" 
-          (click)="scrollToVideo(i)"></span>
+          (click)="dotClicked(i)"
+          ></span>
+          <!-- (click)="scrollToVideo(i)" -->
   </div>
   <div class="playback-buttons">
-    <img *ngIf="videoStatus === 'playing'" src="/assets/images/pause.svg" alt="Pause" (click)="pauseCurrentVideo()">
-    <img *ngIf="videoStatus === 'paused'" src="/assets/images/play.svg" alt="Play" (click)="playCurrentVideo()">
-    <img *ngIf="videoStatus === 'ended'" src="/assets/images/replay.svg" alt="Replay" (click)="replayCurrentVideo()">
+    <img *ngIf="videoStatus === 'playing'" src="/assets/images/pause.svg" 
+    alt="Pause" (click)="pauseCurrentVideo()">
+    <img *ngIf="videoStatus === 'paused'" src="/assets/images/play.svg" 
+    alt="Play" (click)="playCurrentVideo()">
+    <img *ngIf="videoStatus === 'ended'" src="/assets/images/replay.svg"
+     alt="Replay" (click)="replayCurrentVideo()">
   </div>
  </div>
 

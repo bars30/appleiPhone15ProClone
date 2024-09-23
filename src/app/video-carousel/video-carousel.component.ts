@@ -72,28 +72,7 @@ export class VideoCarouselComponent {
     this.videoStatus = 'paused';
   }
 
-  scrollToVideo(index: number): void {
-    if (this.videoContainers && this.videoElements && this.carouselContainer) {
-      const containerElement = this.carouselContainer.nativeElement;
-      const nextVideoContainer = this.videoContainers.toArray()[index].nativeElement;
-  
-      // Calculate the amount to scroll
-      const scrollOffset = nextVideoContainer.offsetLeft;
-  
-      containerElement.scrollTo({
-        left: scrollOffset,
-        behavior: 'smooth'
-      });
-  
-      const nextVideoElement = this.videoElements.toArray()[index].nativeElement;
-      setTimeout(() => {
-        nextVideoElement.play();
-      }, 1000); // delay to allow for scroll animation to finish
-  
-      this.currentVideoIndex = index;
-      this.videoStatus = 'playing';
-    }
-  }
+
   
 
   playCurrentVideo(): void {
@@ -110,54 +89,85 @@ export class VideoCarouselComponent {
 
   replayCurrentVideo(): void {
     this.scrollToVideo(0);
+    this.currentVideoIndex = 0;
   }
-  showProgress(number: any, index: number){
-    console.log("SHOWPROGRESS -> " + number);
-    console.log("SHOWPROGRESS -> " +  index);
+ 
+  scrollToVideo(index: number): void {
+    if (this.videoContainers && this.videoElements && this.carouselContainer) {
+      // Reset the progress of all dots and update the active class
+      this.spans?.forEach((span, idx) => {
+        span.nativeElement.classList.remove('inprogress');
+        span.nativeElement.classList.remove('active'); // Remove active class from all spans
+  
+        // Add active class to the current index
+        if (idx === index) {
+          span.nativeElement.classList.add('active');
+        }
+      });
 
-    if (number > 19 || number == 19) {
+
+      const containerElement = this.carouselContainer.nativeElement;
+      const nextVideoContainer = this.videoContainers.toArray()[index].nativeElement;
+  
+      // Calculate the amount to scroll
+      const scrollOffset = nextVideoContainer.offsetLeft;
+  
+      containerElement.scrollTo({
+        left: scrollOffset,
+        behavior: 'smooth'
+      });
+  
+      const nextVideoElement = this.videoElements.toArray()[index].nativeElement;
+  
+      
+  
+      // Start playing the new video after scrolling
+      setTimeout(() => {
+        nextVideoElement.play();
+      }, 1000); // delay to allow for scroll animation to finish
+  
+      this.currentVideoIndex = index;
+      this.videoStatus = 'playing';
+    }
+  }
+  dotClicked(i: number): void {
+    // Pause the current video before switching
+    const currentVideoElement = this.videoElements?.toArray()[this.currentVideoIndex].nativeElement;
+    if (currentVideoElement) {
+      currentVideoElement.pause();
+    }
+  
+    // Update the video status
+    this.videoStatus = 'paused';
+  
+    // Remove all 'inprogress' and 'active' classes from spans
+    this.spans?.forEach((span, idx) => {
+      span.nativeElement.classList.remove('inprogress');
+      span.nativeElement.classList.remove('active');
+    });
+  
+    // Scroll to the selected video
+    this.scrollToVideo(i);
+  }
+  
+  
+  showProgress(number: any, index: number) {
+    if (number >= 19) {
       document.documentElement.style.setProperty('--inppercent', `${number}%`);
     }
-
-    if(index == 0){
-      if (this.spans) {
-        console.log(this.spans["_results"][0].nativeElement);
-        this.spans["_results"][0].nativeElement.classList.add("inprogress");
-        if(number == 100){
-          this.spans["_results"][0].nativeElement.classList.remove("inprogress");
-          document.documentElement.style.setProperty('--inppercent',  `19%`);
-        }
+  
+    if (this.currentVideoIndex === index) { // Only update the progress for the current video
+      const span = this.spans?.toArray()[index]?.nativeElement; // Use toArray() here
+      span?.classList.add('inprogress');
+  
+      if (number === 100) {
+        span?.classList.remove('inprogress');
+        document.documentElement.style.setProperty('--inppercent', `19%`);
       }
-    } else if(index == 1) {
-        if (this.spans) {
-          console.log(this.spans["_results"][1].nativeElement);
-          this.spans["_results"][1].nativeElement.classList.add("inprogress");
-          if(number == 100){
-            this.spans["_results"][1].nativeElement.classList.remove("inprogress");
-            document.documentElement.style.setProperty('--inppercent',  `19%`);
-          }
-        }
-    } else if (index == 2){
-        if (this.spans) {
-          console.log(this.spans["_results"][2].nativeElement);
-          this.spans["_results"][2].nativeElement.classList.add("inprogress");
-          if(number == 100){
-            this.spans["_results"][2].nativeElement.classList.remove("inprogress");
-            document.documentElement.style.setProperty('--inppercent',  `19%`);
-          }
-        }
-    } else {
-        if (this.spans) {
-          console.log(this.spans["_results"][3].nativeElement);
-          this.spans["_results"][3].nativeElement.classList.add("inprogress");
-          if(number == 100){
-            this.spans["_results"][3].nativeElement.classList.remove("inprogress");
-            document.documentElement.style.setProperty('--inppercent',  `19%`);
-          }
-        }
     }
-    
   }
+  
+  
 
   onTimeUpdate(event: any, index: number): void {
     const videoElement = event.target as HTMLVideoElement;
