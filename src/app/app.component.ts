@@ -5,13 +5,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { HighlightsComponent } from './components/highlights/highlights.component';
 import { IphoneModelComponent } from './components/iphone-model/iphone-model.component';
+import { ModelComponent } from './components/model/model.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,VideoCarouselComponent, NavbarComponent,
-    HeroComponent, HighlightsComponent, IphoneModelComponent
+    HeroComponent, HighlightsComponent, IphoneModelComponent,
+    ModelComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
