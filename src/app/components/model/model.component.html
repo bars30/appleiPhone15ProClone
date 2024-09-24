@@ -5,8 +5,53 @@
 
  <div class="model-cont">
   <div class="model-cont-c">
-   <app-model-view></app-model-view>
+   <app-model-view
+    [index]="1"
+    [groupRef]="'small'"
+    [gsapType]="'view1'"
+    [controlRef]="cameraControlSmall"
+    [item]="model"
+    [size]="size"></app-model-view>
+
+    <app-model-view
+    [index]="2"
+    [groupRef]="'large'"
+    [gsapType]="'view2'"
+    [controlRef]="cameraControlLarge"
+    [item]="model"
+    [size]="size"></app-model-view>
+
+ 
+    <canvas #rendererCanvas></canvas>
   </div>
+
+  <div style=" justify-content: center;
+  align-items: center;">
+   <p>{{model.title}}</p><br>
+   
+   <div style="display: flex; text-align: center;">
+    <ul class="color-container">
+      <li
+      (click)="setModel(model)" 
+      *ngFor="let model of models; let i = index"
+       [style.backgroundColor]="model.color[0]"></li>
+    </ul>
+
+    <div class="btnCont">
+     <button class="chooseBtn"
+       *ngFor="let item of sizes"
+       [style.backgroundColor]="size === item.value ? 'white' : 'transparent'"
+       [style.color]="size === item.value ? 'black' : 'white'"
+       (click)="changeSize(item.value)">
+       <span [style.color]="size === item.value ? 'black' : 'white'">{{ item.label }}</span>
+     </button>
+   </div>
+   
+   
+  </div>
+  <!-- [style]="{ backgroundColor: size === 'small' ? 'white' : 
+   'transparent', color: size === 'small' ? 'black' : 'white' }" -->
+ </div>
  </div>
 </section>
 

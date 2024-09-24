@@ -21,6 +21,52 @@
  }
 }
 
+canvas {
+ width: 100%;
+ height: 100%;
+ /* position: fixed; */
+ top: 0;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ overflow: hidden;
+}
+
+li {
+ width: 2rem;
+ height: 2rem;
+ border-radius: 50%;
+ margin: 0 0.3rem;
+ cursor: pointer;
+}
+
+ul {
+ display: flex;
+ list-style-type: none;
+ padding: 10px;
+ border-radius: 50px;
+ background-color: #353535;
+ width: fit-content;
+ /* margin: auto; */
+}
+
+.chooseBtn {
+ border-radius: 50%;
+ background-color: gray;
+ color: white;
+ padding: 11px 15px;
+ border: none;
+ height: 100%;
+ transition: background-color 0.3s ease, color 0.3s ease;
+}
+.chooseBtn:nth-child(1){
+ margin: 0 5px 0 0;
+}
+.btnCont {
+ border-radius: 50px;
+ background-color: #353535;
+ margin-left: 15px;
+}
 
 
 
